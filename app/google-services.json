@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "330157543683",
+    "project_id": "electronicbazarmad",
+    "storage_bucket": "electronicbazarmad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330157543683:android:5fa4d13e86d281fefcd936",
+        "android_client_info": {
+          "package_name": "com.example.electronicbazarmad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7pfA_yVN_AEGcTjzPkoP2F_8Zu8cW0Mk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
