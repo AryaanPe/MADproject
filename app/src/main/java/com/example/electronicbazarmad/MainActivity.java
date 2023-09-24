@@ -23,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
         EStore = FirebaseDatabase.getInstance().getReference();
 
         String phone = "7506640631";
-        String user = "AryaanP";
+        String user = "Aryaan";
+        String userL = "Peshoton";
         String password = "I049";
-        test(phone, user, password);
+        test(phone, user, password, userL);
     }
 
-    public void test(String phone, String user, String password) {
+    public void test(String phone, String user, String password, String userL) {
         EStore.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -36,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "This ID already registred", Toast.LENGTH_SHORT).show();
 
                 }else{
+                    EStore.child("manager").setValue(phone);
                     DatabaseReference managerRef = EStore.child("manager").child(phone);
                     managerRef.child("user").setValue(user);
+                    managerRef.child("userL").setValue(userL);
                     managerRef.child("password").setValue(password);
+                    Toast.makeText(MainActivity.this, "Data Set ", Toast.LENGTH_SHORT).show();
 
                 }
             }

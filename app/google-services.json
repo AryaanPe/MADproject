@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "330157543683",
+    "firebase_url": "https://electronicbazarmad-default-rtdb.firebaseio.com",
     "project_id": "electronicbazarmad",
     "storage_bucket": "electronicbazarmad.appspot.com"
   },
