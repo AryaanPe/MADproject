@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#f0f0f0">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:textColorHint="#00BCD4"
+        android:backgroundTint="#ffffff"
+        android:textColor="#00BCD4"
+        android:id="@+id/PhoneNum"
+        android:inputType="number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="#FF5722"
+        android:backgroundTint="#ffffff"
+        android:textColor="#FF5722"
+        android:id="@+id/Pass"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
+        android:textColorHint="#333333"
+        android:backgroundTint="#ffffff"
+        android:id="@+id/FirstName"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:textColorHint="#333333"
+        android:backgroundTint="#ffffff"
+        android:id="@+id/LastName"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:textColorHint="#333333"
+        android:backgroundTint="#ffffff"
+        android:id="@+id/Address"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="STATUS"
+        android:textColorHint="#333333"
+        android:backgroundTint="#ffffff"
+        android:id="@+id/status"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/SignUpButton"
+        android:backgroundTint="#333333"
+        android:textColor="#ffffff"
+        android:layout_marginTop="16dp"
+        android:onClick="newacc"/>
+</LinearLayout>
