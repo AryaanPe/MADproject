@@ -63,8 +63,8 @@ public class signup extends AppCompatActivity {
                     if((snapshot.child("manager").child(username).exists())){
                         Toast.makeText(signup.this, "This Manager iD already exits", Toast.LENGTH_SHORT).show();
                     }else{
-                        EStore.child("manager").setValue(username);
-                        DatabaseReference mana = EStore.child("manager").child(username).push();
+//                        EStore.child("manager").setValue(username);
+                        DatabaseReference mana = EStore.child("manager").child(username);
                         mana.child("password").setValue(password);
                         mana.child("user").setValue(first);
                         mana.child("userL").setValue(last);
@@ -85,8 +85,8 @@ public class signup extends AppCompatActivity {
                     if((snapshot.child("customer").child(username).exists())){
                         Toast.makeText(signup.this, "This Customer iD already exits", Toast.LENGTH_LONG).show();
                     }else{
-                        EStore.child("customer").setValue(username);
-                        DatabaseReference cust = EStore.child("customer").child(username).push();
+//                        EStore.child("customer").setValue(username);
+                        DatabaseReference cust = EStore.child("customer").child(username);
                         cust.child("password").setValue(password);
                         cust.child("user").setValue(first);
                         cust.child("userL").setValue(last);
