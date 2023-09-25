@@ -1,6 +1,7 @@
 package com.example.electronicbazarmad;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -35,11 +36,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signup(View view) {
+        if (user.getText().toString().isEmpty() || pass.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (user.getText().toString().length() != 10) {
+            Toast.makeText(this, "Please enter a 10-digit phone number", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent signup = new Intent(this,com.example.electronicbazarmad.signup.class);
         signup.putExtra("UserName",user.getText().toString());
         signup.putExtra("Password",pass.getText().toString());
         signup.putExtra("manager",manager.isChecked());
-        startActivity(signup);
+        startActivityForResult(signup,0);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0){
+            if(resultCode==RESULT_OK){
+                user.setText(data.getStringExtra("user"));
+                pass.setText(data.getStringExtra("pass"));
+                boolean man = data.getBooleanExtra("man",false);
+                if(man==true){
+                    manager.setChecked(true);
+                }else{
+                    manager.setChecked(false);
+                }
+
+            }
+        }
+    }
 }
+

@@ -2,7 +2,6 @@ package com.example.electronicbazarmad;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +39,7 @@ public class signup extends AppCompatActivity {
         pass.setText(password);
         if(status == true){
             Status.setText("Manager");
-            Address.setText(null);
+            Address.setVisibility(View.GONE);
         }else {
             Status.setText("Customer");
         }
@@ -56,6 +54,12 @@ public class signup extends AppCompatActivity {
         String username = signup.getStringExtra("UserName");
         String password = signup.getStringExtra("Password");
         boolean status = signup.getBooleanExtra("manager",false);
+
+        if (username.isEmpty() || password.isEmpty() || first.isEmpty() || last.isEmpty()) {
+            Toast.makeText(signup.this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(status == true){
             EStore.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -63,7 +67,6 @@ public class signup extends AppCompatActivity {
                     if((snapshot.child("manager").child(username).exists())){
                         Toast.makeText(signup.this, "This Manager iD already exits", Toast.LENGTH_SHORT).show();
                     }else{
-//                        EStore.child("manager").setValue(username);
                         DatabaseReference mana = EStore.child("manager").child(username);
                         mana.child("password").setValue(password);
                         mana.child("user").setValue(first);
@@ -85,7 +88,6 @@ public class signup extends AppCompatActivity {
                     if((snapshot.child("customer").child(username).exists())){
                         Toast.makeText(signup.this, "This Customer iD already exits", Toast.LENGTH_LONG).show();
                     }else{
-//                        EStore.child("customer").setValue(username);
                         DatabaseReference cust = EStore.child("customer").child(username);
                         cust.child("password").setValue(password);
                         cust.child("user").setValue(first);
@@ -101,7 +103,11 @@ public class signup extends AppCompatActivity {
                 }
             });
         }
-
-
+        Intent Created = new Intent(this,MainActivity.class);
+        Created.putExtra("user",username);
+        Created.putExtra("pass",password);
+        Created.putExtra("man",status);
+        setResult(RESULT_OK,Created);
+        finish();
     }
 }
