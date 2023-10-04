@@ -60,6 +60,15 @@
         android:backgroundTint="#ffffff"
         android:id="@+id/status"/>
 
+
+    <ImageView
+        android:id="@+id/userimg"
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:onClick="getimage"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/baseline_image_24" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
