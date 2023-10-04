@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addproducts"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#f0f0f0">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manager ID"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/MID"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ProductID"
+        android:textColorHint="#00BCD4"
+        android:backgroundTint="#ffffff"
+        android:textColor="#00BCD4"
+        android:id="@+id/productid"
+        android:inputType="number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Name"
+        android:textColorHint="#FF5722"
+        android:backgroundTint="#ffffff"
+        android:textColor="#FF5722"
+        android:id="@+id/productname"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Category"
+        android:textColorHint="#FF5722"
+        android:backgroundTint="#ffffff"
+        android:textColor="#FF5722"
+        android:inputType="textCapWords"
+        android:id="@+id/productcat"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Description"
+        android:textColorHint="#FF5722"
+        android:backgroundTint="#ffffff"
+        android:textColor="#FF5722"
+        android:id="@+id/productdesc"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Cost"
+        android:textColorHint="#FF5722"
+        android:backgroundTint="#ffffff"
+        android:textColor="#FF5722"
+        android:id="@+id/productcost"/>
+    <ImageView
+        android:id="@+id/productimg"
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:onClick="getimage"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/baseline_image_24" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD PRODUCt"
+        android:backgroundTint="#333333"
+        android:textColor="#ffffff"
+        android:layout_marginTop="16dp"
+        android:onClick="pushproduct"/>
+</LinearLayout>

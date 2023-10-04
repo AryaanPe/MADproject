@@ -57,11 +57,19 @@ public class MainActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String storedPassword = snapshot.child("password").getValue(String.class);
                     if (storedPassword != null && storedPassword.equals(providedPassword)) {
-                        Intent loginIntent = new Intent(MainActivity.this, com.example.electronicbazarmad.login.class);
-                        loginIntent.putExtra("UserName", uname);
-                        loginIntent.putExtra("Password", providedPassword);
-                        loginIntent.putExtra("manager", manager.isChecked());
-                        startActivity(loginIntent);
+                        if(!manager.isChecked()){
+                            Intent loginIntent = new Intent(MainActivity.this, login.class);
+                            loginIntent.putExtra("UserName", uname);
+                            loginIntent.putExtra("Password", providedPassword);
+                            loginIntent.putExtra("manager", manager.isChecked());
+                            startActivity(loginIntent);
+                        }else{
+                            Intent loginIntent = new Intent(MainActivity.this, LogInM.class);
+                            loginIntent.putExtra("UserName", uname);
+                            loginIntent.putExtra("Password", providedPassword);
+                            loginIntent.putExtra("manager", manager.isChecked());
+                            startActivity(loginIntent);
+                        };
                     } else {
                         Toast.makeText(MainActivity.this, "Incorrect password", Toast.LENGTH_SHORT).show();
                     }
