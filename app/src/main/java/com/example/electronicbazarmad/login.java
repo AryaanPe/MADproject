@@ -37,12 +37,7 @@ public class login extends AppCompatActivity {
         String username = login.getStringExtra("UserName");
         String password = login.getStringExtra("Password");
         boolean status = login.getBooleanExtra("manager",false);
-        if(status == true){
-            title.setText("manager");
-            address.setVisibility(View.GONE);
-        }else {
-            title.setText("customer");
-        }
+
         DatabaseReference Ref = EStore.child(title.getText().toString()).child(username);
         Ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -64,7 +59,17 @@ public class login extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+            public void editdetails(View view) {
+                Intent edit = new Intent(login.this, EditDetails.class);
+                edit.putExtra("title","customer");
+                edit.putExtra("id",username);
+                startActivity(edit);
+            }
         });
 
     }
+
+
+
+
 }

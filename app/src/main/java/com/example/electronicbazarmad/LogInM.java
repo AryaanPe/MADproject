@@ -72,6 +72,11 @@ public class LogInM extends AppCompatActivity {
         startActivity(Products);
     }
     public void usersM(View view) {
+        String mid = MID.getText().toString();
+        Intent Users = new Intent(this,ViewUsersM.class);
+        Users.putExtra("MID",mid);
+        startActivity(Users);
+
     }
 
 
