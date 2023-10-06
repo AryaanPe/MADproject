@@ -55,7 +55,10 @@ public class ViewUsersM extends AppCompatActivity  {
                     @Override
                     public void onItemClick(users user) {
                         Intent openuser = new Intent(ViewUsersM.this, login.class);
+                        Toast.makeText(ViewUsersM.this, ""+ user.getUid(), Toast.LENGTH_SHORT).show();
                         openuser.putExtra("UserName",user.getUid());
+                        openuser.putExtra("title","customer");
+                        startActivity(openuser);
                     }
                 });
             }

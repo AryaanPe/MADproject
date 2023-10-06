@@ -35,10 +35,11 @@ public class login extends AppCompatActivity {
 
         Intent login = getIntent();
         String username = login.getStringExtra("UserName");
-        String password = login.getStringExtra("Password");
-        boolean status = login.getBooleanExtra("manager",false);
+        String tit = login.getStringExtra("title");
+//        String password = login.getStringExtra("Password");
+//        boolean status = login.getBooleanExtra("manager",false);
 
-        DatabaseReference Ref = EStore.child(title.getText().toString()).child(username);
+        DatabaseReference Ref = EStore.child(tit).child(username);
         Ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

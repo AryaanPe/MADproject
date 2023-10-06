@@ -62,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
                             loginIntent.putExtra("UserName", uname);
                             loginIntent.putExtra("Password", providedPassword);
                             loginIntent.putExtra("manager", manager.isChecked());
+                            loginIntent.putExtra("title", "customer");
                             startActivity(loginIntent);
                         }else{
                             Intent loginIntent = new Intent(MainActivity.this, LogInM.class);
                             loginIntent.putExtra("UserName", uname);
                             loginIntent.putExtra("Password", providedPassword);
                             loginIntent.putExtra("manager", manager.isChecked());
+                            loginIntent.putExtra("title", "manager");
                             startActivity(loginIntent);
                         };
                     } else {
