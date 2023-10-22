@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -75,8 +76,8 @@ public class login extends AppCompatActivity {
     }
 
     public void browse(View view) {
-        Intent browse = new Intent(this,BrowseProducts.class);
-        browse.putExtra("UID",username);
+        Intent browse = new Intent(login.this,BrowseProducts.class);
+        browse.putExtra("id",username);
         startActivity(browse);
     }
 }

@@ -28,7 +28,8 @@ public class BrowseProducts extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_products);
         Intent browse = getIntent();
-        String UID = browse.getStringExtra("uid");
+        String UID = browse.getStringExtra("id");
+        Toast.makeText(this, ""+UID, Toast.LENGTH_SHORT).show();
         customerid = findViewById(R.id.CID);
         customerid.setText(UID);
         recyclerView = findViewById(R.id.ReView);
@@ -55,9 +56,13 @@ public class BrowseProducts extends AppCompatActivity  {
                 productAdapter.setOnItemClickListener(new productadapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(products product) {
-                        // Handle item click here, e.g., open product details activity
-                        // Replace with your code
-                        Toast.makeText(BrowseProducts.this, "Clicked on product: " + product.getPID(), Toast.LENGTH_SHORT).show();
+                        Intent viewproduct = new Intent(BrowseProducts.this,productdetails.class);
+//                        Toast.makeText(BrowseProducts.this, "Browsing" + product.getPID().toString(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(BrowseProducts.this, "Browsing" + customerid.getText().toString(), Toast.LENGTH_SHORT).show();
+                        viewproduct.putExtra("pid",product.getPID().toString());
+                        viewproduct.putExtra("uid",UID);
+                        startActivity(viewproduct);
+
                     }
                 });
             }

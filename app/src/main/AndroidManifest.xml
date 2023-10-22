@@ -23,6 +23,9 @@
         android:theme="@style/Theme.ElectronicBazarMAD"
         tools:targetApi="31">
         <activity
+            android:name=".productdetails"
+            android:exported="false" />
+        <activity
             android:name=".BrowseProducts"
             android:exported="false" />
         <activity
