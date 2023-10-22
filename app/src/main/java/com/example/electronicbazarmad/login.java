@@ -73,4 +73,10 @@ public class login extends AppCompatActivity {
         edit.putExtra("id",username);
         startActivity(edit);
     }
+
+    public void browse(View view) {
+        Intent browse = new Intent(this,BrowseProducts.class);
+        browse.putExtra("UID",username);
+        startActivity(browse);
+    }
 }
