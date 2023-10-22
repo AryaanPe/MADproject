@@ -20,6 +20,7 @@ public class login extends AppCompatActivity {
     private DatabaseReference EStore;
     private TextView name,address,title;
     private ImageView userI;
+    public String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class login extends AppCompatActivity {
         userI = findViewById(R.id.userI);
 
         Intent login = getIntent();
-        String username = login.getStringExtra("UserName");
+        username = login.getStringExtra("UserName");
         String tit = login.getStringExtra("title");
 //        String password = login.getStringExtra("Password");
 //        boolean status = login.getBooleanExtra("manager",false);
@@ -60,17 +61,16 @@ public class login extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-            public void editdetails(View view) {
-                Intent edit = new Intent(login.this, EditDetails.class);
-                edit.putExtra("title","customer");
-                edit.putExtra("id",username);
-                startActivity(edit);
-            }
+
         });
 
     }
 
 
-
-
+    public void editdetails(View view) {
+        Intent edit = new Intent(login.this, EditDetails.class);
+        edit.putExtra("title","customer");
+        edit.putExtra("id",username);
+        startActivity(edit);
+    }
 }
