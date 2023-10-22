@@ -38,8 +38,7 @@ public class login extends AppCompatActivity {
         Intent login = getIntent();
         username = login.getStringExtra("UserName");
         String tit = login.getStringExtra("title");
-//        String password = login.getStringExtra("Password");
-//        boolean status = login.getBooleanExtra("manager",false);
+
 
         DatabaseReference Ref = EStore.child(tit).child(username);
         Ref.addValueEventListener(new ValueEventListener() {
@@ -79,5 +78,11 @@ public class login extends AppCompatActivity {
         Intent browse = new Intent(login.this,BrowseProducts.class);
         browse.putExtra("id",username);
         startActivity(browse);
+    }
+
+    public void viewcart(View view) {
+        Intent viewcart = new Intent(login.this,cartview.class);
+        viewcart.putExtra("id",username);
+        startActivity(viewcart);
     }
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardBackgroundColor="#FFF7E2">
+
+    <LinearLayout
+        android:id="@+id/LinearUsers"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/CartImage"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="25dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CartName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Product Name"
+                android:textColor="#E47B7B"
+                android:textSize="30dp"
+                android:layout_marginBottom="0in"/>
+            <TextView
+                android:id="@+id/CartQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Product Quantity"
+                android:textColor="#E47B7B"
+                android:textSize="25dp" />
+            <Button
+                android:id="@+id/removebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Remove Item"
+                android:backgroundTint="#58E4C9"
+                android:textColor="#E47B7B"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

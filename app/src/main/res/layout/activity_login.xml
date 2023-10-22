@@ -71,5 +71,12 @@
         android:text="Browse Product"
         android:backgroundTint="@color/black"
         android:onClick="browse"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="View Cart"
+        android:backgroundTint="@color/black"
+        android:onClick="viewcart"/>
 </LinearLayout>

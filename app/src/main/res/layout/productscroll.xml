@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:text="Product ID"
+
                 android:textColor="#E39523"
                 android:gravity="center"/>
             <TextView
@@ -46,9 +47,10 @@
             android:id="@+id/PCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:text="Product Cost"
+            android:layout_marginLeft="190dp"
             android:textColor="#E39523"
-            android:text="Product Cost"/>
+            android:textSize="17sp" />
 
 
     </LinearLayout>
