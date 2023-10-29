@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#f0f0f0">
+    android:background="@color/background">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
         android:text="TechEdge"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="#333333"
-        android:id="@+id/TitleText"/>
+        android:textColor="@color/teal_700"
+        android:id="@+id/TitleText" />
 
     <ImageView
         android:id="@+id/myImageView"
@@ -30,23 +30,24 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="24dp"
-        android:background="#C5EAFA"
+        android:background="@color/secondary"
         android:gravity="center"
         android:hint="Enter Phone Number"
         android:inputType="number"
-        android:textColor="#333333"
-        android:textColorHint="#00BCD4" />
+        android:textColor="@color/accent"
+        android:textColorHint="@color/accent" />
 
     <EditText
         android:id="@+id/Pass"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
-        android:background="#C5EAFA"
+        android:background="@color/secondary"
         android:gravity="center"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        android:textColorHint="#00BCD4" />
+        android:textColor="@color/accent"
+        android:textColorHint="@color/accent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,13 +60,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mcheck"
-            android:checked="false"/>
+            android:checked="false" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MANAGER"
-            android:textColor="#333333"/>
+            android:textColor="@color/teal_700" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,45 +78,31 @@
         android:layout_margin="16dp"
         android:orientation="horizontal">
 
-        <androidx.cardview.widget.CardView
+        <Button
             android:id="@+id/LoginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#C5EAFA"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true"
-            android:onClick="login">
+            android:background="@drawable/buttons"
+            android:text="Login"
+            android:textColor="@color/accent"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:onClick="login" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Login "
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_gravity="center"
-                android:padding="16dp"/>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
+        <Button
             android:id="@+id/SignUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#C5EAFA"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true"
+            android:background="@drawable/buttons"
+            android:text="Sign up"
+            android:textColor="@color/accent"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:padding="16dp"
             android:layout_marginStart="16dp"
-            android:onClick="signup">
+            android:onClick="signup" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign up"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:layout_gravity="center"
-                android:padding="16dp"/>
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </LinearLayout>

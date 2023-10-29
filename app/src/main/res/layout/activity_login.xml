@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login"
+    android:background="#f0f0f0"
+    android:backgroundTint="@color/background"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#f0f0f0">
+    tools:context=".login">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User Page"
-        android:textSize="24sp"
-        android:gravity="center"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/titlepage"/>
+        android:gravity="center"
+        android:text="User Page"
+        android:textColor="@color/accent"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E0E0E0"
-        android:padding="16dp">
+        android:background="@drawable/trans_box"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21">
 
         <ImageView
             android:id="@+id/userI"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="21dp"
             android:src="@drawable/userimg" />
 
         <LinearLayout
@@ -56,27 +71,58 @@
 
         </LinearLayout>
     </RelativeLayout>
+
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:onClick="editdetails"
         android:text="Edit User Details"
-        android:backgroundTint="@color/black"
-        android:onClick="editdetails"/>
+        android:background="@drawable/buttons"
+        android:backgroundTint="@color/highlight"
+        android:textColor="@color/background"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/buttons"
+        android:backgroundTint="@color/highlight"
+        android:textColor="@color/background"
+        android:textStyle="bold"
+        android:onClick="browse"
         android:text="Browse Product"
-        android:backgroundTint="@color/black"
-        android:onClick="browse"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.715" />
+
     <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:background="@drawable/buttons"
+        android:backgroundTint="@color/highlight"
+        android:textColor="@color/background"
+        android:textStyle="bold"
+        android:onClick="viewcart"
         android:text="View Cart"
-        android:backgroundTint="@color/black"
-        android:onClick="viewcart"/>
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
+</androidx.constraintlayout.widget.ConstraintLayout>

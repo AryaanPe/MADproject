@@ -4,34 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ViewUsersM">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Users"
             android:gravity="center"
-            android:textSize="30dp"/>
+            android:textSize="30sp"
+            android:textColor="@color/accent" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ManagerID"
             android:gravity="center"
-            android:textSize="20dp"
-            android:id="@+id/MID"/>
+            android:textSize="20sp"
+            android:id="@+id/MID"
+            android:textColor="@color/accent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/RView"/>
-
-
-
-
+            android:id="@+id/RView" />
     </LinearLayout>
-
-
 </RelativeLayout>

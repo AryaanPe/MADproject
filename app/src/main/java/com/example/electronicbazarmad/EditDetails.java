@@ -25,7 +25,7 @@ import com.google.firebase.storage.UploadTask;
 
 public class EditDetails extends AppCompatActivity {
     private DatabaseReference EStore;
-    private EditText user,pass,FName,LName,Address;
+    private EditText user, pass, FName, LName, Address;
     private TextView Status;
 
     private ImageView userimg;
@@ -41,7 +41,7 @@ public class EditDetails extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         Intent edit = getIntent();
         String username = edit.getStringExtra("id");
-        DatabaseReference ref= EStore.child("customer").child(username);
+        DatabaseReference ref = EStore.child("customer").child(username);
         user = findViewById(R.id.PhoneNum);
         pass = findViewById(R.id.Pass);
         FName = findViewById(R.id.FirstName);
@@ -49,23 +49,20 @@ public class EditDetails extends AppCompatActivity {
         Address = findViewById(R.id.Address);
         userimg = findViewById(R.id.userimg);
         user.setText(username);
-
-
-
     }
 
     public void savechanges(View view) {
         EStore.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String username=user.getText().toString();
+                String username = user.getText().toString();
                 String first = FName.getText().toString();
                 String last = LName.getText().toString();
                 String loc = Address.getText().toString();
                 String password = pass.getText().toString();
 
-                if (username.isEmpty() || password.isEmpty() || first.isEmpty() || last.isEmpty()) {
-                    Toast.makeText(EditDetails.this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+                if (username.isEmpty() || password.isEmpty() || first.isEmpty() || last.isEmpty() || imguri == null) {
+                    Toast.makeText(EditDetails.this, "Please fill in all required fields and select an image", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -97,22 +94,22 @@ public class EditDetails extends AppCompatActivity {
             }
         });
     }
+
     public void getimage(View view) {
         Intent GetImage = new Intent();
         GetImage.setType("image/*");
         GetImage.setAction(GetImage.ACTION_GET_CONTENT);
-        startActivityForResult(GetImage,49);
-
+        startActivityForResult(GetImage, 49);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==49&&data!=null&&data.getData()!=null){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 49 && data != null && data.getData() != null) {
+            if (resultCode == RESULT_OK) {
                 imguri = data.getData();
                 userimg.setImageURI(imguri);
-            };
-        };
+            }
+        }
     }
 }

@@ -4,34 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".BrowseProducts">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Products"
             android:gravity="center"
-            android:textSize="30dp"/>
+            android:textSize="30sp"
+            android:textColor="@color/accent" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CustomerID"
             android:gravity="center"
-            android:textSize="20dp"
-            android:id="@+id/CID"/>
+            android:textSize="20sp"
+            android:id="@+id/CID"
+            android:textColor="@color/accent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ReView"/>
-
-
-
-
+            android:id="@+id/ReView" />
     </LinearLayout>
-
 
 </RelativeLayout>

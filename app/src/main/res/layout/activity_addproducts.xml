@@ -7,22 +7,24 @@
     tools:context=".addproducts"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#f0f0f0">
+    android:background="@color/background">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manager ID"
         android:gravity="center"
         android:textSize="30sp"
-        android:id="@+id/MID"/>
+        android:id="@+id/MID"
+        android:textColor="@color/accent"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ProductID"
-        android:textColorHint="#00BCD4"
-        android:backgroundTint="#ffffff"
-        android:textColor="#00BCD4"
+        android:textColorHint="@color/accent"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/accent"
         android:id="@+id/productid"
         android:inputType="number"/>
 
@@ -30,9 +32,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Product Name"
-        android:textColorHint="#FF5722"
-        android:backgroundTint="#ffffff"
-        android:textColor="#FF5722"
+        android:textColorHint="@color/accent"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/accent"
         android:id="@+id/productname"
         android:inputType="text"/>
 
@@ -40,9 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Product Category"
-        android:textColorHint="#FF5722"
-        android:backgroundTint="#ffffff"
-        android:textColor="#FF5722"
+        android:textColorHint="@color/accent"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/accent"
         android:inputType="textCapWords"
         android:id="@+id/productcat"/>
 
@@ -50,19 +52,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Product Description"
-        android:textColorHint="#FF5722"
-        android:backgroundTint="#ffffff"
-        android:textColor="#FF5722"
+        android:textColorHint="@color/accent"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/accent"
         android:id="@+id/productdesc"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Product Cost"
-        android:textColorHint="#FF5722"
-        android:backgroundTint="#ffffff"
-        android:textColor="#FF5722"
+        android:textColorHint="@color/accent"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/accent"
         android:id="@+id/productcost"/>
+
     <ImageView
         android:id="@+id/productimg"
         android:layout_width="match_parent"
@@ -74,9 +77,10 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD PRODUCt"
-        android:backgroundTint="#333333"
-        android:textColor="#ffffff"
+        android:text="ADD PRODUCT"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/background"
+        android:background="@drawable/buttons"
         android:layout_marginTop="16dp"
         android:onClick="pushproduct"/>
 </LinearLayout>

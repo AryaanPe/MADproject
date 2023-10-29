@@ -1,6 +1,5 @@
 package com.example.electronicbazarmad;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,7 +58,6 @@ public class signup extends AppCompatActivity {
         }else {
             Status.setText("Customer");
         }
-
     }
 
     public void newacc(View view) {
@@ -71,95 +69,35 @@ public class signup extends AppCompatActivity {
         String password = signup.getStringExtra("Password");
         boolean status = signup.getBooleanExtra("manager",false);
 
-        if (username.isEmpty() || password.isEmpty() || first.isEmpty() || last.isEmpty()) {
-            Toast.makeText(signup.this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+        if (username.isEmpty() || password.isEmpty() || first.isEmpty() || last.isEmpty() || imguri == null) {
+            Toast.makeText(signup.this, "Please fill in all required fields and select an image", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
-
-        if(status == true){
+        if (status == true) {
             EStore.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if((snapshot.child("manager").child(username).exists())){
-                        Toast.makeText(signup.this, "This Manager iD already exits", Toast.LENGTH_SHORT).show();
-                    }else{
-                        StorageReference imageRef = storageReference.child("manager/" + username + ".jpg");
-                        imageRef.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        DatabaseReference mana = EStore.child("manager").child(username);
-                                        mana.child("password").setValue(password);
-                                        mana.child("user").setValue(first);
-                                        mana.child("userL").setValue(last);
-                                        mana.child("imageURL").setValue(uri.toString());
-                                        Toast.makeText(signup.this, "Manager Account Created", Toast.LENGTH_LONG).show();
-
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Handle getting the download URL failure
-                                        Toast.makeText(signup.this, "Failed to get image URL.", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Handle image upload failure
-                                Toast.makeText(signup.this, "Image upload failed.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    if ((snapshot.child("manager").child(username).exists())) {
+                        Toast.makeText(signup.this, "This Manager ID already exists", Toast.LENGTH_SHORT).show();
+                    } else {
+                        createAccount(username, password, first, last, loc, status);
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(signup.this, "Error is "+ error.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(signup.this, "Error is " + error.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
-        }
-        if (status == false) {
+        } else {
             EStore.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.child("customer").child(username).exists()) {
                         Toast.makeText(signup.this, "This Customer ID already exists", Toast.LENGTH_LONG).show();
                     } else {
-                        StorageReference imageRef = storageReference.child("customer/" + username + ".jpg");
-                        imageRef.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        DatabaseReference cust = EStore.child("customer").child(username);
-                                        cust.child("password").setValue(password);
-                                        cust.child("user").setValue(first);
-                                        cust.child("userL").setValue(last);
-                                        cust.child("Address").setValue(loc);
-                                        cust.child("imageURL").setValue(uri.toString());
-                                        Toast.makeText(signup.this, "Customer Account Created", Toast.LENGTH_LONG).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-
-                                        Toast.makeText(signup.this, "Failed to get image URL.", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(signup.this, "Image upload failed.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        createAccount(username, password, first, last, loc, status);
                     }
                 }
 
@@ -169,33 +107,71 @@ public class signup extends AppCompatActivity {
                 }
             });
         }
+    }
 
-        Intent Created = new Intent(this,MainActivity.class);
-        Created.putExtra("user",username);
-        Created.putExtra("pass",password);
-        Created.putExtra("man",status);
-        setResult(RESULT_OK,Created);
-        finish();
+    private void createAccount(String username, String password, String first, String last, String loc, boolean status) {
+        StorageReference imageRef;
+        if (status) {
+            imageRef = storageReference.child("manager/" + username + ".jpg");
+        } else {
+            imageRef = storageReference.child("customer/" + username + ".jpg");
+        }
+        imageRef.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        DatabaseReference accountRef;
+                        if (status) {
+                            accountRef = EStore.child("manager").child(username);
+                        } else {
+                            accountRef = EStore.child("customer").child(username);
+                            accountRef.child("Address").setValue(loc);
+                        }
+                        accountRef.child("password").setValue(password);
+                        accountRef.child("user").setValue(first);
+                        accountRef.child("userL").setValue(last);
+                        accountRef.child("imageURL").setValue(uri.toString());
+                        Toast.makeText(signup.this, (status ? "Manager" : "Customer") + " Account Created", Toast.LENGTH_LONG).show();
+
+                        Intent Created = new Intent(signup.this, MainActivity.class);
+                        Created.putExtra("user", username);
+                        Created.putExtra("pass", password);
+                        Created.putExtra("man", status);
+                        setResult(RESULT_OK, Created);
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(signup.this, "Failed to get image URL.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(signup.this, "Image upload failed.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void getimage(View view) {
         Intent GetImage = new Intent();
         GetImage.setType("image/*");
         GetImage.setAction(GetImage.ACTION_GET_CONTENT);
-        startActivityForResult(GetImage,49);
-
+        startActivityForResult(GetImage, 49);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==49&&data!=null&&data.getData()!=null){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 49 && data != null && data.getData() != null) {
+            if (resultCode == RESULT_OK) {
                 imguri = data.getData();
                 userimg.setImageURI(imguri);
-            };
-        };
+            }
+        }
     }
-
-
 }

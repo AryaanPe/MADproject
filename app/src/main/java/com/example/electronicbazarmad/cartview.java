@@ -112,6 +112,13 @@ public class cartview extends AppCompatActivity  {
 
     public void placeolder(View view) {
         Toast.makeText(this, "Order Placed Succesfully", Toast.LENGTH_SHORT).show();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("cart").child(UID);
+        ref.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                finish();
+            }
+        });
     }
 }
 

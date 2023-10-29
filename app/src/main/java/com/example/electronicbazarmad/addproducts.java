@@ -58,22 +58,22 @@ public class addproducts extends AppCompatActivity {
     }
 
     public void pushproduct(View view) {
-        EStore.addValueEventListener(new ValueEventListener() {
+        String managerIdText = managerId.getText().toString();
+        String productidText = productid.getText().toString();
+        String productnameText = productname.getText().toString();
+        String productcatText = productcat.getText().toString();
+        String productdescText = productdesc.getText().toString();
+        String productcostText = productcost.getText().toString();
+
+        if (productidText.isEmpty() || productnameText.isEmpty() || productcatText.isEmpty() ||
+                productdescText.isEmpty() || productcostText.isEmpty() || imguri == null) {
+            Toast.makeText(addproducts.this, "Provide all details", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        EStore.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String managerIdText = managerId.getText().toString();
-                String productidText = productid.getText().toString();
-                String productnameText = productname.getText().toString();
-                String productcatText = productcat.getText().toString();
-                String productdescText = productdesc.getText().toString();
-                String productcostText = productcost.getText().toString();
-
-                if (productidText.isEmpty() || productnameText.isEmpty() || productcatText.isEmpty() ||
-                        productdescText.isEmpty() || productcostText.isEmpty() || imguri == null) {
-                    Toast.makeText(addproducts.this, "Provide all details", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 if (snapshot.child("products").child(productidText).exists()) {
                     Toast.makeText(addproducts.this, "Product ID " + productidText + " already exists", Toast.LENGTH_SHORT).show();
                 } else {
@@ -102,12 +102,10 @@ public class addproducts extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle onCancelled if needed
+
             }
         });
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
